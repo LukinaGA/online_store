@@ -19,6 +19,7 @@ def read_json(filename: str) -> object:
 
         for product in category["products"]:
             products.append(Product(**product))
+        category["products"] = products
 
         categories.append(Category(**category))
 
