@@ -1,12 +1,13 @@
+from typing import Union
 class Product:
     """Класс для представления товара"""
 
     name: str
     description: str
-    price: float
+    __price: float
     quantity: int
 
-    def __init__(self, name, description, price, quantity):
+    def __init__(self, name: str, description: str, price: float, quantity: int):
         """Метод для инициализации экземпляра класса"""
 
         self.name = name
@@ -15,17 +16,18 @@ class Product:
         self.quantity = quantity
 
     @classmethod
-    def new_product(cls, product_dict):
+    def new_product(cls, product_dict: dict) -> "Product":
+        """Создаёт новый экземпляр класса Product из словаря"""
         return cls(**product_dict)
 
-
     @property
-    def price(self):
+    def price(self) -> float:
+        """Возвращает цену товара"""
         return self.__price
 
-
     @price.setter
-    def price(self, new_price):
+    def price(self, new_price: float) -> None:
+        """Возвращает сообщение об ошибке, если цена меньше или равна нулю"""
         if new_price <= 0:
             print("Цена не должна быть нулевая или отрицательная")
         else:
@@ -37,7 +39,7 @@ class Category:
 
     name: str
     description: str
-    products: list
+    __products: list
     category_count = 0
     product_count = 0
 
@@ -50,28 +52,22 @@ class Category:
         Category.category_count += 1
         Category.product_count += len(products)
 
-
     @property
-    def products(self):
+    def products(self) -> list:
+        """Возвращает список продуктов категории"""
         return self.__products
 
-
     @products.setter
-    def add_product(self, product: Product):
+    def add_product(self, product: Product) -> None:
+        """Добавляет продукт в список продуктов категории"""
         self.__products.append(product)
         Category.product_count += 1
 
-
     @property
-    def products_list(self):
+    def products_list(self) -> str:
+        """Возвращает список товара в виде строки"""
         product_str = ""
         for product in self.__products:
-            product_str += f'{product.name}, {product.price} руб. Остаток: {product.quantity} шт.\n'
+            product_str += f"{product.name}, {product.price} руб. Остаток: {product.quantity} шт.\n"
+
         return product_str
-
-
-product = {"name": "Nokia", "description": "Yellow", "price": 90000.0, "quantity": 10}
-new_product = Product.new_product(product)
-
-print(new_product.price)
-print(new_product.name)
