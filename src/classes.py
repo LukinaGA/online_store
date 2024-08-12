@@ -53,9 +53,13 @@ class Category:
         Category.product_count += len(products)
 
     @property
-    def products(self) -> list:
-        """Возвращает список продуктов категории"""
-        return self.__products
+    def products(self) -> str:
+        """Возвращает список товара в виде строки"""
+        product_str = ""
+        for product in self.__products:
+            product_str += f"{product.name}, {product.price} руб. Остаток: {product.quantity} шт.\n"
+
+        return product_str
 
     @products.setter
     def add_product(self, product: Product) -> None:
@@ -63,11 +67,5 @@ class Category:
         self.__products.append(product)
         Category.product_count += 1
 
-    @property
-    def products_list(self) -> str:
-        """Возвращает список товара в виде строки"""
-        product_str = ""
-        for product in self.__products:
-            product_str += f"{product.name}, {product.price} руб. Остаток: {product.quantity} шт.\n"
 
-        return product_str
+
