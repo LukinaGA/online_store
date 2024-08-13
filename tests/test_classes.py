@@ -15,13 +15,13 @@ def test_category_init(category_1, category_2):
     )
     assert len(category_1.products.split("\n")) - 1 == 2
 
-    assert Category.category_count == 2
-    assert category_1.category_count == 2
-    assert category_2.category_count == 2
+    assert Category.category_count == 4
+    assert category_1.category_count == 4
+    assert category_2.category_count == 4
 
-    assert category_1.product_count == 3
-    assert category_2.product_count == 3
-    assert Category.product_count == 3
+    assert category_1.product_count == 7
+    assert category_2.product_count == 7
+    assert Category.product_count == 7
 
 
 def test_category_products_list_property(category_1):

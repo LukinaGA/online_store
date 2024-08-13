@@ -41,3 +41,39 @@ def category_2():
                     "станет вашим другом и помощником",
         products=[Product('55" QLED 4K', "Фоновая подсветка", 123000.0, 7)],
     )
+
+
+@pytest.fixture
+def products_json():
+    return [
+  {
+    "name": "Смартфоны",
+    "description": "Современные смартфоны",
+    "products": [
+      {
+        "name": "Samsung",
+        "description": "Серый",
+        "price": 180000.0,
+        "quantity": 5
+      },
+      {
+        "name": "Iphone 15",
+        "description": "Gray",
+        "price": 210000.0,
+        "quantity": 8
+      },
+    ]
+  },
+  {
+    "name": "Телевизоры",
+    "description": "Современный телевизор",
+    "products": [
+      {
+        "name": '55"',
+        "description": "Фоновая подсветка",
+        "price": 123000.0,
+        "quantity": 7
+      }
+    ]
+  }
+]
