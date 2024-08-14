@@ -13,28 +13,27 @@ def test_category_init(category_1, category_2):
     assert category_1.description == (
         "Смартфоны, как средство не только коммуникации, " "но и получения дополнительных функций для удобства жизни"
     )
-    assert len(category_1.products) == 2
+    assert len(category_1.products.split("\n")) - 1 == 2
 
-    assert Category.category_count == 2
-    assert category_1.category_count == 2
-    assert category_2.category_count == 2
+    assert Category.category_count == 4
+    assert category_1.category_count == 4
+    assert category_2.category_count == 4
 
-    assert category_1.product_count == 3
-    assert category_2.product_count == 3
-    assert Category.product_count == 3
+    assert category_1.product_count == 7
+    assert category_2.product_count == 7
+    assert Category.product_count == 7
 
 
 def test_category_products_list_property(category_1):
-    assert category_1.products_list == (
-        "Samsung Galaxy S23 Ultra, 180000.0 руб. Остаток: 5 шт.\n"
-        "Iphone 15, 210000.0 руб. Остаток: 8 шт.\n"
+    assert category_1.products == (
+        "Samsung Galaxy S23 Ultra, 180000.0 руб. Остаток: 5 шт.\n" "Iphone 15, 210000.0 руб. Остаток: 8 шт.\n"
     )
 
 
 def test_category_products_setter(category_1, product):
-    assert len(category_1.products) == 2
+    assert len(category_1.products.split("\n")) - 1 == 2
     category_1.add_product = product
-    assert len(category_1.products) == 3
+    assert len(category_1.products.split("\n")) - 1 == 3
 
 
 def test_product_new_product():
@@ -63,3 +62,17 @@ def test_price_setter(capsys, product):
 
     product.price = 0.1
     assert product.price == 0.1
+
+
+def test_str_product(product):
+    assert str(product) == "Samsung Galaxy S23 Ultra, 180000.0 руб. Остаток: 5 шт."
+
+
+def test_str_category(category_1, category_2):
+    assert str(category_1) == "Смартфоны, количество продуктов: 13"
+    assert str(category_2) == "Телевизоры, количество продуктов: 7"
+
+
+def test_add_products(product, product_2, product_3):
+    assert product + product_2 == 2_580_000.0
+    assert product + product_3 == 900_000.0

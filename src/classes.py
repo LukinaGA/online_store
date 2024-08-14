@@ -1,4 +1,3 @@
-from typing import Union
 class Product:
     """Класс для представления товара"""
 
@@ -14,6 +13,10 @@ class Product:
         self.description = description
         self.__price = price
         self.quantity = quantity
+
+    def __str__(self) -> str:
+        """Метод для строкового отображения информации о товаре"""
+        return f"{self.name}, {self.__price} руб. Остаток: {self.quantity} шт."
 
     @classmethod
     def new_product(cls, product_dict: dict) -> "Product":
@@ -32,6 +35,13 @@ class Product:
             print("Цена не должна быть нулевая или отрицательная")
         else:
             self.__price = new_price
+
+    def __add__(self, other) -> float:
+        """Суммирует цену всех экземпляров, имеющихся на складе, для двух товаров"""
+        price_1 = self.__price * self.quantity
+        price_2 = other.__price * other.quantity
+
+        return price_1 + price_2
 
 
 class Category:
@@ -52,12 +62,18 @@ class Category:
         Category.category_count += 1
         Category.product_count += len(products)
 
+    def __str__(self) -> str:
+        """Метод для строкового отображения информации о категории"""
+        quantity = sum([product.quantity for product in self.__products])
+
+        return f"{self.name}, количество продуктов: {quantity}"
+
     @property
     def products(self) -> str:
         """Возвращает список товара в виде строки"""
         product_str = ""
         for product in self.__products:
-            product_str += f"{product.name}, {product.price} руб. Остаток: {product.quantity} шт.\n"
+            product_str += str(product) + "\n"
 
         return product_str
 
@@ -66,6 +82,3 @@ class Category:
         """Добавляет продукт в список продуктов категории"""
         self.__products.append(product)
         Category.product_count += 1
-
-
-

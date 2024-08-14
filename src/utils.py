@@ -24,3 +24,6 @@ def read_json(filename: str) -> object:
         categories.append(Category(**category))
 
     return categories
+
+
+print(read_json("products.json"))
