@@ -11,11 +11,11 @@ def test_smartphone_init(grass1):
     assert grass1.color == "Зеленый"
 
 
-def test_smartphone_add(grass1, grass2):
+def test_lawn_grass_add(grass1, grass2):
     assert grass1 + grass2 == 16750
 
 
-def test_smartphone_add_error(grass1, smartphone1):
+def test_lawn_grass_add_error(grass1, smartphone1):
     with pytest.raises(TypeError):
         res1 = grass1 + smartphone1
         res2 = grass1 + 1
