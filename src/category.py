@@ -34,7 +34,6 @@ class Category:
 
         return product_str
 
-    @products.setter
     def add_product(self, product: Product) -> None:
         """Добавляет продукт в список продуктов категории"""
         if isinstance(product, Product):

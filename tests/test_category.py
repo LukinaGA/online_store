@@ -25,7 +25,7 @@ def test_category_products_list_property(category_1):
 
 def test_category_products_setter(category_1, product):
     assert len(category_1.products.split("\n")) - 1 == 2
-    category_1.add_product = product
+    category_1.add_product(product)
     assert len(category_1.products.split("\n")) - 1 == 3
 
 
