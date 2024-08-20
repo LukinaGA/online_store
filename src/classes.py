@@ -82,5 +82,8 @@ class Category:
     @products.setter
     def add_product(self, product: Product) -> None:
         """Добавляет продукт в список продуктов категории"""
-        self.__products.append(product)
-        Category.product_count += 1
+        if isinstance(product, Product):
+            self.__products.append(product)
+            Category.product_count += 1
+        else:
+            raise TypeError
