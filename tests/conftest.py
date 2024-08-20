@@ -28,7 +28,7 @@ def category_1():
     return Category(
         name="Смартфоны",
         description="Смартфоны, как средство не только коммуникации, "
-                    "но и получения дополнительных функций для удобства жизни",
+        "но и получения дополнительных функций для удобства жизни",
         products=[
             Product("Samsung Galaxy S23 Ultra", "256GB, Серый цвет, 200MP камера", 180000.0, 5),
             Product("Iphone 15", "512GB, Gray space", 210000.0, 8),
@@ -41,15 +41,17 @@ def category_2():
     return Category(
         name="Телевизоры",
         description="Современный телевизор, который позволяет наслаждаться просмотром, "
-                    "станет вашим другом и помощником",
+        "станет вашим другом и помощником",
         products=[Product('55" QLED 4K', "Фоновая подсветка", 123000.0, 7)],
     )
 
 
 @pytest.fixture
 def smartphone1():
-    return Smartphone("Samsung Galaxy S23 Ultra", "256GB, Серый цвет, 200MP камера", 180000.0, 5, 95.5,
-                             "S23 Ultra", 256, "Серый")
+    return Smartphone(
+        "Samsung Galaxy S23 Ultra", "256GB, Серый цвет, 200MP камера", 180000.0, 5, 95.5, "S23 Ultra", 256, "Серый"
+    )
+
 
 @pytest.fixture
 def smartphone2():
@@ -69,34 +71,17 @@ def grass2():
 @pytest.fixture
 def products_json():
     return [
-  {
-    "name": "Смартфоны",
-    "description": "Современные смартфоны",
-    "products": [
-      {
-        "name": "Samsung",
-        "description": "Серый",
-        "price": 180000.0,
-        "quantity": 5
-      },
-      {
-        "name": "Iphone 15",
-        "description": "Gray",
-        "price": 210000.0,
-        "quantity": 8
-      },
+        {
+            "name": "Смартфоны",
+            "description": "Современные смартфоны",
+            "products": [
+                {"name": "Samsung", "description": "Серый", "price": 180000.0, "quantity": 5},
+                {"name": "Iphone 15", "description": "Gray", "price": 210000.0, "quantity": 8},
+            ],
+        },
+        {
+            "name": "Телевизоры",
+            "description": "Современный телевизор",
+            "products": [{"name": '55"', "description": "Фоновая подсветка", "price": 123000.0, "quantity": 7}],
+        },
     ]
-  },
-  {
-    "name": "Телевизоры",
-    "description": "Современный телевизор",
-    "products": [
-      {
-        "name": '55"',
-        "description": "Фоновая подсветка",
-        "price": 123000.0,
-        "quantity": 7
-      }
-    ]
-  }
-]

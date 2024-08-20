@@ -44,4 +44,3 @@ def test_category_add_product_error(category_1):
 def test_category_products_add_product_smartphone(category_1, smartphone1):
     category_1.add_product(smartphone1)
     assert category_1.products.split("\n")[-2] == "Samsung Galaxy S23 Ultra, 180000.0 руб. Остаток: 5 шт."
-
