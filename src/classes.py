@@ -38,11 +38,13 @@ class Product:
 
     def __add__(self, other) -> float:
         """Суммирует цену всех экземпляров, имеющихся на складе, для двух товаров"""
-        price_1 = self.__price * self.quantity
-        price_2 = other.__price * other.quantity
+        if type(other) == self.__class__:
+            price_1 = self.__price * self.quantity
+            price_2 = other.__price * other.quantity
 
-        return price_1 + price_2
+            return price_1 + price_2
 
+        raise TypeError
 
 class Category:
     """Класс для предоставления категорий товаров"""
