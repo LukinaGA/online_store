@@ -2,7 +2,8 @@ import json
 import os
 
 from config import DATA_DIR
-from src.classes import Category, Product
+from src.category import Category
+from src.product import Product
 
 
 def read_json(filename: str) -> object:
