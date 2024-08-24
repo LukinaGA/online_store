@@ -1,6 +1,6 @@
 from unittest.mock import patch
 
-from src.classes import Product
+from src.product import Product
 from src.utils import read_json
 
 
